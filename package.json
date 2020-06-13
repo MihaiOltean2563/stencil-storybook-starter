@@ -26,7 +26,10 @@
     "stencil:generate": "stencil generate",
     "storybook:start": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
-    "prettier": "prettier --write \"src/**/!(*.d).{js,ts,tsx,html}\""
+    "prettier": "prettier --write \"src/**/!(*.d).{js,ts,tsx,html}\"",
+    "build-storybook": "build-storybook -c .storybook -o .out",
+    "deploy-storybook": "storybook-to-ghpages",
+    "deploy-storybook-aws": "storybook-to-aws-s3"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -37,6 +40,7 @@
     "@storybook/addon-knobs": "^5.3.14",
     "@storybook/addon-notes": "^5.3.14",
     "@storybook/html": "^5.3.14",
+    "@storybook/storybook-deployer": "^2.8.6",
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.1.1",
     "jsx-dom": "^6.4.10",
