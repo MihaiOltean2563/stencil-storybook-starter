@@ -11,6 +11,11 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface DgSpinner {}
+  interface FrpButton {}
+  interface FrpColors {}
+  interface FrpTooltip {
+    'text': string;
+  }
   interface MyButton {
     'label': string;
   }
@@ -39,6 +44,24 @@ declare global {
     new (): HTMLDgSpinnerElement;
   };
 
+  interface HTMLFrpButtonElement extends Components.FrpButton, HTMLStencilElement {}
+  var HTMLFrpButtonElement: {
+    prototype: HTMLFrpButtonElement;
+    new (): HTMLFrpButtonElement;
+  };
+
+  interface HTMLFrpColorsElement extends Components.FrpColors, HTMLStencilElement {}
+  var HTMLFrpColorsElement: {
+    prototype: HTMLFrpColorsElement;
+    new (): HTMLFrpColorsElement;
+  };
+
+  interface HTMLFrpTooltipElement extends Components.FrpTooltip, HTMLStencilElement {}
+  var HTMLFrpTooltipElement: {
+    prototype: HTMLFrpTooltipElement;
+    new (): HTMLFrpTooltipElement;
+  };
+
   interface HTMLMyButtonElement extends Components.MyButton, HTMLStencilElement {}
   var HTMLMyButtonElement: {
     prototype: HTMLMyButtonElement;
@@ -52,6 +75,9 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'dg-spinner': HTMLDgSpinnerElement;
+    'frp-button': HTMLFrpButtonElement;
+    'frp-colors': HTMLFrpColorsElement;
+    'frp-tooltip': HTMLFrpTooltipElement;
     'my-button': HTMLMyButtonElement;
     'my-component': HTMLMyComponentElement;
   }
@@ -59,6 +85,11 @@ declare global {
 
 declare namespace LocalJSX {
   interface DgSpinner {}
+  interface FrpButton {}
+  interface FrpColors {}
+  interface FrpTooltip {
+    'text'?: string;
+  }
   interface MyButton {
     'label'?: string;
     'onOnClick'?: (event: CustomEvent<any>) => void;
@@ -80,6 +111,9 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'dg-spinner': DgSpinner;
+    'frp-button': FrpButton;
+    'frp-colors': FrpColors;
+    'frp-tooltip': FrpTooltip;
     'my-button': MyButton;
     'my-component': MyComponent;
   }
@@ -92,6 +126,9 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'dg-spinner': LocalJSX.DgSpinner & JSXBase.HTMLAttributes<HTMLDgSpinnerElement>;
+      'frp-button': LocalJSX.FrpButton & JSXBase.HTMLAttributes<HTMLFrpButtonElement>;
+      'frp-colors': LocalJSX.FrpColors & JSXBase.HTMLAttributes<HTMLFrpColorsElement>;
+      'frp-tooltip': LocalJSX.FrpTooltip & JSXBase.HTMLAttributes<HTMLFrpTooltipElement>;
       'my-button': LocalJSX.MyButton & JSXBase.HTMLAttributes<HTMLMyButtonElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
     }

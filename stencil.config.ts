@@ -1,4 +1,5 @@
 import { Config } from "@stencil/core";
+import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: "storybook-stencil-example",
@@ -15,4 +16,12 @@ export const config: Config = {
       serviceWorker: null // disable service workers
     }
   ],
+  plugins: [sass(
+    {
+      injectGlobalPaths: [
+        // 'src/global/variables.scss', //works !
+        'src/assets/scss/styles.scss',
+      ]
+    }
+  )]
 };
