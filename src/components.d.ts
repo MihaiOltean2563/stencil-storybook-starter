@@ -13,6 +13,25 @@ export namespace Components {
   interface DgSpinner {}
   interface FrpButton {}
   interface FrpColors {}
+  interface FrpIcon {
+    /**
+    * This component accepts a variable string for a color class we already declared
+    */
+    'color': string;
+    /**
+    * Value passed in Ems and if empty, defaults to 'lg (48px)'
+    */
+    'size': string | {};
+    /**
+    * This component accepts a brand string or defaults to 'default' theme
+    */
+    'theme': string;
+    /**
+    * Can be one of the following classes declared in _icons.scss
+    */
+    'type': string;
+  }
+  interface FrpIcons {}
   interface FrpTooltip {
     'text': string;
   }
@@ -56,6 +75,18 @@ declare global {
     new (): HTMLFrpColorsElement;
   };
 
+  interface HTMLFrpIconElement extends Components.FrpIcon, HTMLStencilElement {}
+  var HTMLFrpIconElement: {
+    prototype: HTMLFrpIconElement;
+    new (): HTMLFrpIconElement;
+  };
+
+  interface HTMLFrpIconsElement extends Components.FrpIcons, HTMLStencilElement {}
+  var HTMLFrpIconsElement: {
+    prototype: HTMLFrpIconsElement;
+    new (): HTMLFrpIconsElement;
+  };
+
   interface HTMLFrpTooltipElement extends Components.FrpTooltip, HTMLStencilElement {}
   var HTMLFrpTooltipElement: {
     prototype: HTMLFrpTooltipElement;
@@ -77,6 +108,8 @@ declare global {
     'dg-spinner': HTMLDgSpinnerElement;
     'frp-button': HTMLFrpButtonElement;
     'frp-colors': HTMLFrpColorsElement;
+    'frp-icon': HTMLFrpIconElement;
+    'frp-icons': HTMLFrpIconsElement;
     'frp-tooltip': HTMLFrpTooltipElement;
     'my-button': HTMLMyButtonElement;
     'my-component': HTMLMyComponentElement;
@@ -87,6 +120,25 @@ declare namespace LocalJSX {
   interface DgSpinner {}
   interface FrpButton {}
   interface FrpColors {}
+  interface FrpIcon {
+    /**
+    * This component accepts a variable string for a color class we already declared
+    */
+    'color'?: string;
+    /**
+    * Value passed in Ems and if empty, defaults to 'lg (48px)'
+    */
+    'size'?: string | {};
+    /**
+    * This component accepts a brand string or defaults to 'default' theme
+    */
+    'theme'?: string;
+    /**
+    * Can be one of the following classes declared in _icons.scss
+    */
+    'type'?: string;
+  }
+  interface FrpIcons {}
   interface FrpTooltip {
     'text'?: string;
   }
@@ -113,6 +165,8 @@ declare namespace LocalJSX {
     'dg-spinner': DgSpinner;
     'frp-button': FrpButton;
     'frp-colors': FrpColors;
+    'frp-icon': FrpIcon;
+    'frp-icons': FrpIcons;
     'frp-tooltip': FrpTooltip;
     'my-button': MyButton;
     'my-component': MyComponent;
@@ -128,6 +182,8 @@ declare module "@stencil/core" {
       'dg-spinner': LocalJSX.DgSpinner & JSXBase.HTMLAttributes<HTMLDgSpinnerElement>;
       'frp-button': LocalJSX.FrpButton & JSXBase.HTMLAttributes<HTMLFrpButtonElement>;
       'frp-colors': LocalJSX.FrpColors & JSXBase.HTMLAttributes<HTMLFrpColorsElement>;
+      'frp-icon': LocalJSX.FrpIcon & JSXBase.HTMLAttributes<HTMLFrpIconElement>;
+      'frp-icons': LocalJSX.FrpIcons & JSXBase.HTMLAttributes<HTMLFrpIconsElement>;
       'frp-tooltip': LocalJSX.FrpTooltip & JSXBase.HTMLAttributes<HTMLFrpTooltipElement>;
       'my-button': LocalJSX.MyButton & JSXBase.HTMLAttributes<HTMLMyButtonElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
