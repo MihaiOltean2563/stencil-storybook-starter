@@ -1,0 +1,19 @@
+{
+  "entries": [
+    "components\\button\\button.js",
+    "components\\my-button\\my-button.js",
+    "components\\tooltip\\tooltip.js",
+    "components\\spinner\\spinner.js",
+    "components\\icon\\icon.js",
+    "components\\my-component\\my-component.js",
+    "styleguide\\colors\\colors.js",
+    "styleguide\\icons\\icons.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "1.8.4",
+    "typescriptVersion": "3.7.2"
+  },
+  "collections": [],
+  "bundles": []
+}
