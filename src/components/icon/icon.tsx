@@ -18,6 +18,11 @@ export class Icon{
   @Prop({ reflect: true }) type: string;
 
   /**
+   * Determines whether the icon is wrapped in a circle
+   */
+  @Prop({ reflect: true }) circle: boolean = false;
+
+  /**
    * This component accepts a brand string or defaults to 'default' theme
    */
   @Prop({ reflect: true }) theme: string;
@@ -28,33 +33,38 @@ export class Icon{
   @Prop({ reflect: true }) color: string = '';
 
   /**
-   * Value passed in Ems and if empty, defaults to 'lg (48px)'
+   * Value passed in Ems or breapoints (xxs, xs, sm, md, xl, xxl, xxxl) and if empty, defaults to 'lg (48px)'
    */
-  @Prop({ mutable: true, reflectToAttr: true}) size: string | {};
+  @Prop({ mutable: true, reflectToAttr: true}) size: string;
   
   @Watch('size')
   sizeChanged(newValue: string, oldValue: string){
     if(newValue !== oldValue){
       this.iconEl.style.fontSize = +newValue + 'rem';
     }
+    //if breakpoints values are passed, remove style from child to prevent css rules from being overwritten
+    if(this.isBreakpointString(newValue)){
+      this.iconEl.removeAttribute('style');
+    }
+  }
+
+  isBreakpointString(bp: string){
+    const breakpoints = ['xxs', 'xs', 'sm', 'md',  'xl', 'xxl', 'xxxl'];
+    return breakpoints.includes(bp);
+  }
+
+  //set initial Icon Size in Rems
+  componentDidLoad(){
+    if(this.size){
+      this.iconEl.style.fontSize = +this.size + 'rem';
+    }
   }
 
   /**
-   *  /**
-     * 
-     * --icon-xxxs: 8px;
-  --icon-xxs:  12px;
-  --icon-xs:   16px;
-  --icon-sm:   24px;
-  --icon-md:   32px;
-  --icon-lg:   48px;
-  --icon-xl:   64px;
-  --icon-xxl:  96px;
-  --icon-xxxl: 128px;
+   * 
    * the hostData is a built-in StencilJS fn that allows us to add css attributes based on tsx conditions.
    * Here it's used for adding the data-theme attribute for themed css variables
    */
-
   hostData(){
     return {'data-theme': this.theme ? lowercase(this.theme) : ''};
   }

@@ -15,13 +15,17 @@ export namespace Components {
   interface FrpColors {}
   interface FrpIcon {
     /**
+    * Determines whether the icon is wrapped in a circle
+    */
+    'circle': boolean;
+    /**
     * This component accepts a variable string for a color class we already declared
     */
     'color': string;
     /**
-    * Value passed in Ems and if empty, defaults to 'lg (48px)'
+    * Value passed in Ems or breapoints (xxs, xs, sm, md, xl, xxl, xxxl) and if empty, defaults to 'lg (48px)'
     */
-    'size': string | {};
+    'size': string;
     /**
     * This component accepts a brand string or defaults to 'default' theme
     */
@@ -122,13 +126,17 @@ declare namespace LocalJSX {
   interface FrpColors {}
   interface FrpIcon {
     /**
+    * Determines whether the icon is wrapped in a circle
+    */
+    'circle'?: boolean;
+    /**
     * This component accepts a variable string for a color class we already declared
     */
     'color'?: string;
     /**
-    * Value passed in Ems and if empty, defaults to 'lg (48px)'
+    * Value passed in Ems or breapoints (xxs, xs, sm, md, xl, xxl, xxxl) and if empty, defaults to 'lg (48px)'
     */
-    'size'?: string | {};
+    'size'?: string;
     /**
     * This component accepts a brand string or defaults to 'default' theme
     */
