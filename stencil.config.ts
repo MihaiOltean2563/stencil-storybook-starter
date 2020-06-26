@@ -19,7 +19,6 @@ export const config: Config = {
   plugins: [sass(
     {
       injectGlobalPaths: [
-        // 'src/global/variables.scss', //works !
         'src/assets/scss/styles.scss',
       ]
     }

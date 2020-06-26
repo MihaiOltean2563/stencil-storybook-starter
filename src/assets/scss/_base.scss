@@ -699,16 +699,16 @@ u {
   --icon-xxxl: 128px;
 }
 
-.icon {
-  display: inline-block;
-  color: inherit;
-  fill: currentColor;
-  height: 1em;
-  width: 1em;
-  line-height: 1;
-  flex-shrink: 0;
-  max-width: initial;
-}
+// .icon {  currently All coming from the Icon Component scss - remove
+//   display: inline-block;
+//   color: inherit;
+//   fill: currentColor;
+//   height: 1em;
+//   width: 1em;
+//   line-height: 1;
+//   flex-shrink: 0;
+//   max-width: initial;
+// }
 
 // icon size
 .icon--xxxs { font-size: var(--icon-xxxs); }

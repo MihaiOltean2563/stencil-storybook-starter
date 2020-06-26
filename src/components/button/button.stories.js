@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/html';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-knobs';
 import { withActions } from '@storybook/addon-actions';
 import { h } from 'jsx-dom';
 
@@ -10,7 +10,36 @@ storiesOf('Elements|Button', module)
     'Default',
     () => {
       return (
-        <frp-button onClick={() => { console.log('Clicked');}}></frp-button>
+        <div class="container max-width-xl padding-y-md">
+          <frp-button></frp-button>
+        </div>
+      );
+    }
+  )
+
+storiesOf('Elements|Button', module)
+  .addDecorator(withKnobs)
+  .add(
+    'Primary',
+    () => {
+      return (
+        <div class="container max-width-xl padding-y-md">
+          <frp-button type="primary">Primary</frp-button>
+        </div>
+      );
+    }
+  );
+
+ 
+storiesOf('Elements|Button', module)
+  .addDecorator(withKnobs)
+  .add(
+    'Secondary',
+    () => {
+      return (
+        <div class="container max-width-xl padding-y-md">
+          <frp-button type="secondary">Secondary</frp-button>
+        </div>
       );
     }
   );

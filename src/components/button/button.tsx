@@ -1,4 +1,4 @@
-import { Component, h } from "@stencil/core";
+import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
 
 @Component({
     tag: 'frp-button',
@@ -7,18 +7,25 @@ import { Component, h } from "@stencil/core";
 })
 export class Button{
 
-    render(){
-      return (
-        <div class="container">
-          <button 
-            class="btn">
-            <div></div>
-            <div class="content">
-              Hello World
-            </div>
-          </button>
+  @Event({eventName: 'onClick'}) onClick: EventEmitter<MouseEvent>;
+  @Prop() type: string;
+
+  handleClick(event: MouseEvent) {
+    this.onClick.emit(event);
+    console.log('clicked');
+  }
+
+  render(){
+    return (
+      <button 
+        class={this.type ? "btn btn--" + this.type : 'btn btn--default'}
+        onClick={this.handleClick.bind(this)}>
+        <div></div>
+        <div class="content">
+         <slot>Default</slot>
         </div>
-      );
-    }
+      </button>
+    );
+  }
 
 }
