@@ -11,7 +11,9 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface DgSpinner {}
-  interface FrpButton {}
+  interface FrpButton {
+    'type': string;
+  }
   interface FrpColors {}
   interface FrpIcon {
     /**
@@ -41,20 +43,6 @@ export namespace Components {
   }
   interface MyButton {
     'label': string;
-  }
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
   }
 }
 
@@ -102,12 +90,6 @@ declare global {
     prototype: HTMLMyButtonElement;
     new (): HTMLMyButtonElement;
   };
-
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
-  };
   interface HTMLElementTagNameMap {
     'dg-spinner': HTMLDgSpinnerElement;
     'frp-button': HTMLFrpButtonElement;
@@ -116,13 +98,15 @@ declare global {
     'frp-icons': HTMLFrpIconsElement;
     'frp-tooltip': HTMLFrpTooltipElement;
     'my-button': HTMLMyButtonElement;
-    'my-component': HTMLMyComponentElement;
   }
 }
 
 declare namespace LocalJSX {
   interface DgSpinner {}
-  interface FrpButton {}
+  interface FrpButton {
+    'onOnClick'?: (event: CustomEvent<MouseEvent>) => void;
+    'type'?: string;
+  }
   interface FrpColors {}
   interface FrpIcon {
     /**
@@ -154,20 +138,6 @@ declare namespace LocalJSX {
     'label'?: string;
     'onOnClick'?: (event: CustomEvent<any>) => void;
   }
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
-  }
 
   interface IntrinsicElements {
     'dg-spinner': DgSpinner;
@@ -177,7 +147,6 @@ declare namespace LocalJSX {
     'frp-icons': FrpIcons;
     'frp-tooltip': FrpTooltip;
     'my-button': MyButton;
-    'my-component': MyComponent;
   }
 }
 
@@ -194,7 +163,6 @@ declare module "@stencil/core" {
       'frp-icons': LocalJSX.FrpIcons & JSXBase.HTMLAttributes<HTMLFrpIconsElement>;
       'frp-tooltip': LocalJSX.FrpTooltip & JSXBase.HTMLAttributes<HTMLFrpTooltipElement>;
       'my-button': LocalJSX.MyButton & JSXBase.HTMLAttributes<HTMLMyButtonElement>;
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
     }
   }
 }
